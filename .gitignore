@@ -1,0 +1,20 @@
+# Unity specific
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Mm]emoryCaptures/
+.vs/
+*.csproj
+*.unityproj
+*.sln
+*.user
+*.pidb
+*.suo
+*.booproj
+*.svd
+*.pdb
+*.opendb
+*.VC.db
