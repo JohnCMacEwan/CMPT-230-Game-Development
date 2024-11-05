@@ -9,6 +9,7 @@ public class Shoot : MonoBehaviour
 
     public Transform Fire;
     public GameObject bullet;
+    public AudioSource audioSrc;
 
     public float bulletForce = 10f;
 
@@ -17,6 +18,7 @@ public class Shoot : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1"))
         {
+            audioSrc.Play();
             ShootBullet();
         }
     }
