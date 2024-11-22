@@ -1536,6 +1536,14 @@ MonoBehaviour:
   rb: {fileID: 491433575}
   cam: {fileID: 519420031}
   audioSrc: {fileID: 491433580}
+  dashSpeed: 8
+  dashDuration: 0.2
+  dashCooldown: 1
+  isDashing: 0
+  Fire: {fileID: 91348549}
+  bullet: {fileID: 4942865293128678913, guid: 3c8ac3233ac991a40819689b4b157fbb, type: 3}
+  audioSrcShoot: {fileID: 491433581}
+  bulletForce: 15
 --- !u!50 &491433575
 Rigidbody2D:
   serializedVersion: 4
@@ -1624,7 +1632,7 @@ Transform:
   m_GameObject: {fileID: 491433573}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.78, y: -0.53, z: 0}
+  m_LocalPosition: {x: -6.6, y: -3.31, z: 0}
   m_LocalScale: {x: 0.11881757, y: 0.11881757, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1638,7 +1646,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 491433573}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 84c338865036d414f94a8c4f19018818, type: 3}
   m_Name: 
@@ -1704,7 +1712,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: c0d3b0eb9e3b8714ab3500664c1fab56, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.508
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1800,7 +1808,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 11495fe2fb792cc47a1e419bc6dadb68, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.522
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -5468,7 +5476,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
