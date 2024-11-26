@@ -32,7 +32,8 @@ public class Enemy : MonoBehaviour
 
     void FixedUpdate()
     {
-        float distanceToPlayer = Vector2.Distance(this.transform.position, target.position);
+        float distanceToPlayer = Vector2.Distance(transform.position, target.position);
+
         if (distanceToPlayer > distanceStop) {
             rb.velocity = transform.up * speed; // Move forward in the direction the enemy is facing
         } 
