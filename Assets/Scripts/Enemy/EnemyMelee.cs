@@ -21,12 +21,12 @@ public class EnemyMelee : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float distanceToTarget = Vector2.Distance(target.position, this.transform.position);
+        float distanceToTarget = Vector2.Distance(target.position, transform.position);
 
         if (distanceToTarget <= attackRange && timeSinceLastAttack + attackCooldown < Time.time)
         {
             timeSinceLastAttack = Time.time;
-            Debug.Log("Player Hit!");
+            target.gameObject.GetComponent<Health>().TakeDamage(10f);
         }
     }
 }

@@ -16,18 +16,12 @@ public class Enemy : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        getTarget();
     }
 
     private void Update()
     {
-        if (!target)
-        {
-            getTarget(); // Assign a target if one isn't found
-        }
-        else
-        {
-            RotateToTarget(); // Rotate towards the target
-        }
+        RotateToTarget();
     }
 
     void FixedUpdate()

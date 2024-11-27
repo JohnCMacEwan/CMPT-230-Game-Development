@@ -7,10 +7,14 @@ public class EnemyHealth : MonoBehaviour
     public float hp = 100f;    // Enemy's current health
     public float maxHp = 100f; // Enemy's maximum health
 
+    public GameObject waveManagerObject;
+
+    private WaveManager waveManager;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        waveManager = waveManagerObject.GetComponent<WaveManager>();
     }
 
     // Update is called once per frame
@@ -43,6 +47,7 @@ public class EnemyHealth : MonoBehaviour
         // Destroy the enemy if health drops to zero
         if (hp <= 0f)
         {
+            waveManager.aliveEnemies.Remove(gameObject);
             Destroy(gameObject);
         }
     }
