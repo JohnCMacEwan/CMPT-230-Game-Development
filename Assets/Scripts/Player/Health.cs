@@ -15,6 +15,7 @@ public class Health : MonoBehaviour
     public void Update()
     {
         if (healthBar.localScale == new Vector3(0, 1, 1)) gameObject.SetActive(false);
+        // Set player's position manually, otherwise he will fly off to nowhere.
         if (hp <= 0) transform.position = deathPos;
         healthBar.localScale = Vector3.Slerp(healthBar.localScale, new Vector3(hp / maxHp, 1, 1), 10f * Time.deltaTime);
     }
