@@ -7,16 +7,16 @@ public class Health : MonoBehaviour
     public float hp = 100f;
     public float maxHp = 100f;
 
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    private RectTransform healthBar;
+
+    private Vector3 deathPos;
+
+    public void Update()
     {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        if (healthBar.localScale == new Vector3(0, 1, 1)) gameObject.SetActive(false);
+        if (hp <= 0) transform.position = deathPos;
+        healthBar.localScale = Vector3.Slerp(healthBar.localScale, new Vector3(hp / maxHp, 1, 1), 10f * Time.deltaTime);
     }
 
     // This is called when a collision is detected
@@ -33,14 +33,15 @@ public class Health : MonoBehaviour
     {
         hp -= damage;
 
-        if (hp < 0f)
-        {
-            hp = 0f;
-        }
-
         if (hp <= 0f)
         {
-            Destroy(gameObject);
+            deathPos = transform.position;
+            hp = 0f;
+            foreach (MonoBehaviour component in gameObject.GetComponents<MonoBehaviour>())
+            {
+                if (component.Equals(this)) return;
+                component.enabled = false;
+            }
         }
     }
 }
