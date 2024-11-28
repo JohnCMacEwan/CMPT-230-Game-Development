@@ -45,4 +45,11 @@ public class Health : MonoBehaviour
             }
         }
     }
+
+    public void Heal(float regen)
+    {
+        hp += regen;
+
+        if (hp > maxHp) hp = maxHp;
+    }
 }

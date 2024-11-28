@@ -14,6 +14,13 @@ public class Shoot : MonoBehaviour
 
     public float bulletForce = 10f;
 
+    private Health health;
+
+    private void Start()
+    {
+        health = gameObject.GetComponent<Health>();
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -31,5 +38,6 @@ public class Shoot : MonoBehaviour
         Rigidbody2D rb = bulletObj.GetComponent<Rigidbody2D>();
 
         rb.AddForce(Fire.up * bulletForce, ForceMode2D.Impulse);
+        health.TakeDamage(2f);
     }
 }

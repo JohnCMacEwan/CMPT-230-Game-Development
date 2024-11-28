@@ -11,6 +11,9 @@ public class WaveManager : MonoBehaviour
     public BoundsInt gateBounds;
     public Tilemap gateTiles;
 
+    [SerializeField]
+    private Camera cam;
+
     public GameObject enemyBulletsFolder;
 
     private int currentRoomIndex = 0;
@@ -33,6 +36,8 @@ public class WaveManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        cam.transform.position = new Vector3(0, 0, -10);
+
         // Ensure waves list is ordered properly
         rooms.OrderByDescending(obj => obj.gameObject.name);
 
@@ -62,10 +67,11 @@ public class WaveManager : MonoBehaviour
                 timeSinceLastSpawn = Time.time;
                 spawned++;
             }
-        } else if (spawned == roomManager.enemyCount[currentWave] && aliveEnemies.Count <= 0 && currentRoomIndex != rooms.Count - 1)
+        } else if (roomManager.waves > 0 && spawned == roomManager.enemyCount[currentWave] && aliveEnemies.Count <= 0)
         {
             currentWave++;
             roomManager.waves--;
+            Debug.Log(roomManager.waves);
             spawned = 0;
         }
     }

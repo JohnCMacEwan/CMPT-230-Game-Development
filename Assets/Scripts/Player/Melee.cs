@@ -9,6 +9,8 @@ public class Melee : MonoBehaviour
     private SpriteRenderer meleeSprite;
     private CapsuleCollider2D capsuleCollider;
 
+    private Health health;
+
     private List<Collider2D> hit = new List<Collider2D>();
 
     private float timeSinceLastAttack = 0;
@@ -21,6 +23,7 @@ public class Melee : MonoBehaviour
     {
         meleeSprite = meleeHitbox.GetComponent<SpriteRenderer>();
         capsuleCollider = meleeHitbox.GetComponent<CapsuleCollider2D>();
+        health = gameObject.GetComponent<Health>();
     }
 
     // Update is called once per frame
@@ -44,10 +47,11 @@ public class Melee : MonoBehaviour
     {
         if (attacked)
         {
-            if (!hit.Contains(collision))
+            if (!hit.Contains(collision) && collision.gameObject.GetComponent<EnemyHealth>() != null)
             {
                 hit.Add(collision);
                 collision.gameObject.GetComponent<EnemyHealth>().TakeDamage(30f);
+                health.Heal(15f);
             }
         }
     }
