@@ -10,11 +10,16 @@ public class Shoot : MonoBehaviour
 
     public Transform Fire;
     public GameObject bullet;
-    public AudioSource audioSrc;
 
     public float bulletForce = 10f;
 
     private Health health;
+
+    [SerializeField]
+    private AudioSource shotSource;
+
+    [SerializeField]
+    private AudioClip clip;
 
     private void Start()
     {
@@ -26,7 +31,6 @@ public class Shoot : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            audioSrc.Play();
             ShootBullet();
         }
     }
@@ -39,5 +43,6 @@ public class Shoot : MonoBehaviour
 
         rb.AddForce(Fire.up * bulletForce, ForceMode2D.Impulse);
         health.TakeDamage(2f);
+        shotSource.PlayOneShot(clip);
     }
 }

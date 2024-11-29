@@ -11,6 +11,11 @@ public class EnemyMelee : MonoBehaviour
 
     private float timeSinceLastAttack;
 
+    [SerializeField]
+    private AudioSource source;
+    [SerializeField]
+    private AudioClip clip;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +32,7 @@ public class EnemyMelee : MonoBehaviour
         {
             timeSinceLastAttack = Time.time;
             target.gameObject.GetComponent<Health>().TakeDamage(10f);
+            source.PlayOneShot(clip);
         }
     }
 }
