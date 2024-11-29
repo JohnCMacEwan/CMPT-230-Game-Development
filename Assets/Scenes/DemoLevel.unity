@@ -15088,6 +15088,7 @@ MonoBehaviour:
   source: {fileID: 1852887527}
   music:
   - {fileID: 8300000, guid: 863e70263109160479b26ee47bbb4cde, type: 3}
+  - {fileID: 8300000, guid: 863e70263109160479b26ee47bbb4cde, type: 3}
 --- !u!1 &1946505398
 GameObject:
   m_ObjectHideFlags: 0
@@ -15295,7 +15296,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000061035156, y: -0.000061035156}
+  m_AnchoredPosition: {x: 0.00012207031, y: -0.000061035156}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1987855549
