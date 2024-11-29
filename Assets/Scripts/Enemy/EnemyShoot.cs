@@ -14,8 +14,6 @@ public class EnemyShoot : MonoBehaviour
     public float shotTime = 1f;
 
     private float lastShot;
-    [SerializeField]
-    private AudioSource shotSound;
 
     // Start is called before the first frame update
     void Start()
@@ -39,7 +37,5 @@ public class EnemyShoot : MonoBehaviour
         bulletObj.transform.SetParent(enemyBulletsFolder.transform);
         Rigidbody2D rb = bulletObj.GetComponent<Rigidbody2D>();
         rb.AddForce(Fire.up * bulletForce, ForceMode2D.Impulse);
-
-        shotSound.PlayOneShot(shotSound.clip);
     }
 }

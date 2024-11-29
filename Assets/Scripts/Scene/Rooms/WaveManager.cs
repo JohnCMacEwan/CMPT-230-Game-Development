@@ -33,12 +33,6 @@ public class WaveManager : MonoBehaviour
     private float spawnSpeed = 1f;
     private int spawned = 0;
 
-    [SerializeField]
-    private AudioSource source;
-    [SerializeField]
-    private AudioClip clip;
-    private bool playing = false;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -58,12 +52,7 @@ public class WaveManager : MonoBehaviour
         {
             currentRoom.transform.Find("Spawner").gameObject.layer = 15;
             gateTiles.SetTilesBlock(gateBounds, openGateTiles.ToArray());
-            if (!playing)
-            {
-                source.PlayOneShot(clip);
-                playing = true;
-            }
-                currentWave = 0;
+            currentWave = 0;
         } else if (roomManager.waves > 0 && spawned < roomManager.enemyCount[currentWave]) 
         {
             Vector3 spawnPoint = currentRoom.transform.Find("Spawner").transform.position + new Vector3(0, -2, 0);
@@ -82,6 +71,7 @@ public class WaveManager : MonoBehaviour
         {
             currentWave++;
             roomManager.waves--;
+            Debug.Log(roomManager.waves);
             spawned = 0;
         }
     }
@@ -89,13 +79,11 @@ public class WaveManager : MonoBehaviour
     public void changeRoom()
     {
         currentRoomIndex++;
-        playing = false;
         currentRoom = rooms[currentRoomIndex];
         roomManager = currentRoom.GetComponent<RoomManager>();
         rooms[currentRoomIndex - 1].transform.Find("Spawner").gameObject.layer = 14;
         gateTiles.SetTilesBlock(gateBounds, closedGateTiles.ToArray());
         gateBounds = new BoundsInt(new Vector3Int(gateBounds.position.x, gateBounds.position.y + 11, gateBounds.z), gateBounds.size);
-        source.PlayOneShot(clip);
         currentWave = 0;
     }
 }

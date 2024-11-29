@@ -9,9 +9,7 @@ public class PlayerMovement : MonoBehaviour
         
     public Rigidbody2D rb;
     public Camera cam;
-
-    [SerializeField]
-    private Footsteps footstepsScript;
+    public AudioSource audioSrc;
 
     Vector2 movement;
     Vector2 mousePosition;
@@ -22,9 +20,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float dashCooldown = 1f;
     float nextDashTime = 0f;
     public bool isDashing;
-
-    public float footstepSpeed = 0.5f;
-    private float footstepTime = 0f;
 
     // Update is called once per frame
     void Update()
@@ -52,11 +47,14 @@ public class PlayerMovement : MonoBehaviour
         float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg -90f;
         rb.rotation = angle;
 
-        if (movement.normalized.magnitude != 0 && Time.time > footstepSpeed + footstepTime)
+        if (movement.normalized.magnitude != 0)
         {
-            footstepTime = Time.time;
-            footstepsScript.PlayStep();
+            if (!audioSrc.isPlaying)
+            {
+                audioSrc.Play();
+            }
         }
+        else { audioSrc.Stop(); }
     }
 
     private IEnumerator Dash()
