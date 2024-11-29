@@ -18,6 +18,13 @@ public class Melee : MonoBehaviour
 
     private bool attacked = false;
 
+    [SerializeField]
+    private AudioSource source;
+    [SerializeField]
+    private AudioClip hitClip;
+    [SerializeField]
+    private AudioClip missClip;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +45,8 @@ public class Melee : MonoBehaviour
         else if (attacked && timeSinceLastAttack + 0.1f < Time.time)
         {
             meleeSprite.enabled = false;
+            if (hit.Count > 0) source.PlayOneShot(hitClip);
+            else source.PlayOneShot(missClip);
             hit = new List<Collider2D>();
             attacked = false;
         }
