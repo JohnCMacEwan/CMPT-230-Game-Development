@@ -133,6 +133,14 @@ MonoBehaviour:
   speed: 1.5
   rotateSpeed: 0.025
   distanceStop: 0
+  footsteps:
+  - {fileID: 8300000, guid: 5818ac0ff17200f4ea46d6a5b9c0eff6, type: 3}
+  - {fileID: 8300000, guid: eb782b5b2be4e274f8269915a6fdfad8, type: 3}
+  - {fileID: 8300000, guid: 026b57f40a4b55e45a4e970a3acee0ed, type: 3}
+  - {fileID: 8300000, guid: c00809712f3c28a48b8e223a0324a92d, type: 3}
+  - {fileID: 8300000, guid: bc6cc594d6c92ee41a92c2f13c1faebe, type: 3}
+  source: {fileID: 3905440962969437288}
+  footstepSpeed: 1
 --- !u!114 &391754096962694758
 MonoBehaviour:
   m_ObjectHideFlags: 0

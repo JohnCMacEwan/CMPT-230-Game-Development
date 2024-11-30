@@ -13,6 +13,16 @@ public class Enemy : MonoBehaviour
 
     public float distanceStop = 0f;
 
+    [SerializeField]
+    private List<AudioClip> footsteps;
+
+    [SerializeField]
+    private AudioSource source;
+
+    private int clip = 0;
+    private float lastFootstep = 0f;
+    public float footstepSpeed = 0.2f;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -21,6 +31,15 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
+        if (rb.velocity.magnitude >= 0.1f && Time.time > lastFootstep + footstepSpeed)
+        {
+            lastFootstep = Time.time;
+            source.PlayOneShot(footsteps[clip]);
+            clip++;
+
+            if (clip >= footsteps.Count) clip = 0;
+        }
+
         RotateToTarget();
     }
 
